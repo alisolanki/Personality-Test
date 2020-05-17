@@ -11,9 +11,6 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text(Data().questionText[questionIndex].values.elementAt(1)),
-      child: Text(Data().questionText[questionIndex].values.elementAt(1)),
-      child: Text(Data().questionText[questionIndex].values.elementAt(1)),
-      child: Text(Data().questionText[questionIndex].values.elementAt(1)),
     );
   }
 }
