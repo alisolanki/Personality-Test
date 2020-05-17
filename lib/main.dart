@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import './questions.dart';
 import './answers.dart';
+import './data.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+  
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -25,20 +27,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var _questions = [
-      {
-        'questionText': 'What\'s your name?',
-        'answerText': ['Ali', 'Someone', 'RandomGuy', 'RandomGirl'],
-      },
-      {
-        'questionText': 'What\'s your favourite colour?',
-        'answerText': ['Red', 'Blue', 'Black', 'White'],
-      },
-      {
-        'questionText': 'What\'s your favourite animal?',
-        'answerText': ['Horse', 'Dog', 'Cat', 'Lion'],
-      }
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -47,11 +35,10 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(_questionIndex),
-            Answer(_answerChosen),
-            RaisedButton(
-              child: Text('Answer 2'),
-              onPressed: _answerChosen,
-            ),
+            ...(Data().questionText[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_questionIndex, answer, _answerChosen);
+            }).toList(),
           ],
         ),
       ),
