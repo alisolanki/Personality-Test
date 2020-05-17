@@ -4,10 +4,9 @@ import './data.dart';
 
 class Answer extends StatelessWidget {
   final Function answerChosen;
-  final answerIndex;
-  final questionIndex;
+  final answer;
 
-  Answer(this.questionIndex, this.answerIndex, this.answerChosen);
+  Answer(this.answer, this.answerChosen);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,9 @@ class Answer extends StatelessWidget {
         color: Colors.blue,
         textColor: Colors.white,
         child: Text(
-          Data().questionText[questionIndex]['answerIndex'],
-          textAlign: TextAlign.center,
+          answer,
           style: TextStyle(fontWeight: FontWeight.normal),
+          textAlign: TextAlign.center,
         ),
         onPressed: answerChosen,
       ),

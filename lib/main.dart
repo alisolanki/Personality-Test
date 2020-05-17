@@ -35,9 +35,9 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(_questionIndex),
-            ...(Data().questionText[_questionIndex]['answers'] as List<String>)
+            ...(Data().questionText[_questionIndex]['answerText'] as List<String>)
                 .map((answer) {
-              return Answer(_questionIndex, answer, _answerChosen);
+              return Answer(answer, _answerChosen);
             }).toList(),
           ],
         ),
