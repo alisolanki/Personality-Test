@@ -3,14 +3,23 @@ import 'package:flutter/material.dart';
 import './data.dart';
 
 class Answer extends StatelessWidget {
-  var questionIndex;
+  final Function answerChosen;
 
-  Answer(this.questionIndex);
+  Answer(this.answerChosen);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(Data().questionText[questionIndex].values.elementAt(1)),
+      child: RaisedButton(
+        color: Colors.blue,
+        textColor: Colors.white,
+        child: Text(
+          'Answer',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.normal),
+        ),
+        onPressed: answerChosen,
+      ),
     );
   }
 }
