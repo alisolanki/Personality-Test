@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Data {
 
-  final questionText = [
+  static const questionText = const [
     {
       'questionText': 'What is your favourite colour?',
       'answerText': ['Red', 'Blue', 'Black', 'White'],
