@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import './questions.dart';
 import './answers.dart';
 import './data.dart';
+import './result.dart';
+import './quiz.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
-  
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -17,12 +18,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _score = 0;
 
-  void _answerChosen() {
+  void answerChosen(int answer) {
     setState(() {
+      _score += answer;
       _questionIndex = _questionIndex + 1;
     });
-    print(_questionIndex);
+    print(answer);
   }
 
   @override
@@ -32,15 +35,9 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Check Your Personality'),
         ),
-        body: Column(
-          children: [
-            Question(_questionIndex),
-            ...(Data.questionText[_questionIndex]['answerText'] as List<String>)
-                .map((answer) {
-              return Answer(answer, _answerChosen);
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < Data.questionText.length
+            ? Quiz(_questionIndex, answerChosen)
+            : Result(_score),
       ),
     );
   }

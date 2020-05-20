@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import './data.dart';
 
 class Answer extends StatelessWidget {
+  final answerStr;
   final Function answerChosen;
-  final _answer;
+  final int score;
 
-  Answer(this._answer, this.answerChosen);
+  Answer(this.score, this.answerStr, this.answerChosen());
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class Answer extends StatelessWidget {
         color: Colors.blue,
         textColor: Colors.white,
         child: Text(
-          _answer,
+          answerStr,
           style: TextStyle(fontWeight: FontWeight.normal),
           textAlign: TextAlign.center,
         ),
