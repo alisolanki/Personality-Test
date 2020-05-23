@@ -28,6 +28,13 @@ class _MyAppState extends State<MyApp> {
     print(answer);
   }
 
+  void restartApp() {
+    setState(() {
+      _questionIndex = 0;
+      _score = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +44,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: _questionIndex < Data.questionText.length
             ? Quiz(_questionIndex, answerChosen)
-            : Result(_score),
+            : Result(_score, restartApp),
       ),
     );
   }
